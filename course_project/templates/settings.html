@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar_user %}
+    {{ username }}
+{% endblock %}
+
+{% block content %}
+Settings:
+<div class="row h-75">
+        <div class="col-3 offset-2">
+            <h2 id="settings">Settings:</h2>
+            <div class="card card-body shadow">
+                <form method="GET" action="/venmo_settings">
+                    <button type="submit" class="btn bg-dark text-white btn-block">Venmo Settings</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-3 offset-2">
+            <h2 id="delete_account">Delete Account</h2>
+            <div class="card card-body shadow">
+                <p>Are you sure you want to delete your account? If so, select the button below:</p>
+                <form method="POST" action="/delete_user">
+                    <button type="submit" class="btn bg-danger text-white btn-block">Delete PliroMe Account</button>
+                </form>
+            </div>
+        </div>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+{% endblock %}

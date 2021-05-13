@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar_user %}
+    {{ username }}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid w-100 h-100 bg-light">
+        <div class="row align-items-center h-25">
+            <div class="col-6 offset-2">
+                <div id="brand"></div>
+            </div>
+        </div>
+        <div class="row h-75">
+            <div class="col-3 offset-2">
+                <h5 id="brand">{{group_name}}</h5>
+                <div class="card card-body shadow">
+                    <div>
+                        <img src="{{ pic }}" width="250" height="250">
+                    </div>
+                <form method="POST" action="/add_group_picture" enctype="multipart/form-data">
+                    <h6>Change Group Picture</h6>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="image" id="image">
+                        <label class="custom-file-label" for="image">Select image...</label>
+                    </div>
+                        <button type="submit" class="btn bg-dark text-white btn-block">Add pic</button>
+                    </form>
+                <br>
+                </div>
+                <div class="card card-body shadow">
+                    <p>Group Members:</p>
+                    <br>
+                    <ul>
+                    {% for index in range(num_people) %}
+                    <li>
+                        <b>User: </b>{{ group_members[index] }}
+                        <b>Venmo: </b>{{ venmos[index] }}
+                    </li>
+                    {% endfor %}
+                    </ul>
+                    <br>
+                    <form method="GET" action="/profile">
+                        <button type="submit" class="btn bg-dark text-white btn-block">View Groups</button>
+                    </form>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <form method="GET" action="/leave_group">
+                    <button type="submit" class="btn btn-secondary btn-danger btn-small">Leave Group</button>
+                </form>
+            </div>
+            <div class="col-5">
+                <h5 class="text-right" id="brand">Purchases</h5>
+                <div class="card card-body shadow">
+                    <p>Purchases:</p>
+                    <br>
+                    <ul>
+                    {% for index in range(num) %}
+                        <li>
+                        <b>Item: </b>{{ items[index] }}
+                        <b>Buyer: </b>{{ buyers[index] }}
+                        <b>Cost: </b>{{ prices[index] }}
+                        <form method='POST' action='/delete_purchase'>
+                            <input type='hidden' name='item_name' value='{{items[index]}}'>
+                            <button type='submit' class="btn btn-secondary btn-danger btn-small">Delete Purchase</button>
+                        </form>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                    <p>Recipts:</p>
+                    {% for pic in img_links %}
+                    <div >
+                        <img src="{{ pic }}" width="300" height="400">
+                    </div>
+                    <br>
+                    {% endfor %}
+                    <br>
+                    <form method="GET" action="/add_purchase">
+                        <input type="hidden" name="group_name" value={{ group_name }}>
+                        <button type="submit" class="btn bg-dark text-white btn-block">Add Purchase</button>
+                    </form>
+                    <hr/>
+                    <span class="text-right text-muted">Click "+" to add a purchase!</span>
+                    <br>
+                    <br>
+                    <form method="POST" action="/get_venmo">
+                        <div>
+                            <input type="checkbox" id="sendVenmos" name="sendVenmos">
+                            <label for="sendVenmos">Send Venmo Requests</label>
+                        </div>
+                        <button type="submit" class="btn bg-dark text-white btn-block">Get Transaction List</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar_user %}
+    {{ username }}
+{% endblock %}
+
+{% block content %}
+<b>NOTE: If this is your first time signing in with Venmo you must contact the network administrator at
+bbeinish@terpmail.umd.edu for security reasons, otherwise your account will not have Venmo functionality.</b>
+<form method="POST" action="/get_access_token">
+    <div class="form-group">
+        <input type="email" class="form-control" name="email" placeholder="Venmo Email">
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" name="password" placeholder="Venmo Password">
+    </div>
+    <button type="submit" class="btn bg-dark text-white btn-block">Enter</button>
+</form>
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+{% endblock %}

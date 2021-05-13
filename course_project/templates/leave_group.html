@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar_user %}
+    {{ username }}
+{% endblock %}
+
+{% block content %}
+<H1 align="center">
+  <p style="color:red">Warning:</p>
+  <p style="color:red">Clicking confirm will cause you to leave this group!</p>
+  <p style="color:black">Would you, {{username}}, like to leave group {{group}}?</p>
+</H1>
+<form method="GET" action="/leave_group_user">
+    <p align="center">
+        <button type="submit" class="btn bg-dark text-white btn-lg" name="cancel" value="cancel">Cancel</button>
+    </p>
+</form>
+<form method="POST" action="/leave_group_user">
+    <p align="center">
+        <button type="submit" class="btn btn-danger btn-lg" name="leave" value="leave">Leave Group</button>
+    </p>
+</form>
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+{% endblock %}

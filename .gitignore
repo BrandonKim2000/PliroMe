@@ -1,0 +1,12 @@
+__pycache__/
+.idea
+.vscode
+project-env
+.coverage
+stdout.out
+tests/.pytest_cache
+docs/build/
+env/
+venv/
+tests/__pycache__
+

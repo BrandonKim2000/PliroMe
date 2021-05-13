@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar_user %}
+    {{ username }}
+{% endblock %}
+
+{% block settings_user %}
+    {{ self.navbar_user }}
+{% endblock %}
+
+{% block content %}
+Contact Us
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+{% endblock %}

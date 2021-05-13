@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar_user %}
+    {{ username }}
+{% endblock %}
+
+{% block content %}
+<H1 align="center">List of Venmo Transactions For Group: {{group}}</H1>
+<div class="card card-body shadow">
+    <H2 align="center"><p>Transactions:</p></H2>
+    <br>
+    <ul>
+    {% for transaction in transactions %}
+    <H4 align="center"><li>{{transaction[1]}} owes {{transaction[0]}} ${{transaction[2]}}</li></H4>
+    {% endfor %}
+    </ul>
+</div>
+<div>
+    <form method='POST' action='/delete_all_purchases'>
+        <button type='submit' class="btn btn-secondary btn-danger btn-small">Delete All Purchase From Group</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+{% endblock %}

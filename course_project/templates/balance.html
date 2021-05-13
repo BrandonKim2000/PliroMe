@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar_user %}
+    {{ username }}
+{% endblock %}
+
+{% block settings_user %}
+    {{ self.navbar_user }}
+{% endblock %}
+
+{% block content %}
+<H1 align="center"> Your Balance is: </H1>
+
+{% if balance < 0 %}
+<H1 align="center"><p style="color:red">${{balance}}</p></H1>
+{% elif balance > 0 %}
+<H1 align="center"><p style="color:green">${{balance}}</p></H1>
+{% else %}
+<H1 align="center"><p style="color:black">${{balance}}</p></H1>
+{% endif %}
+
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+{% endblock %}

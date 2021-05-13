@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar_user %}
+    {{ username }}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid w-100 h-100 bg-light"> 
+        <div class="row align-items-center h-25">
+            <div class="col-6 offset-2">
+                <div id="brand">Steps for Use: </div>
+                <ol> 
+                    <li> Create a group. </li>
+                    <li> Add a purchase. </li>
+                    <li> Choose a split. </li>
+                    <li> Click "Split" </li>
+                    <li> Let PliroMe do the rest! </li>
+                </ol>
+            </div>
+        </div>
+        <div class="row h-75">
+            <div class="col-3 offset-2">
+                <h5 id="brand">Groups</h5>
+                <div class="card card-body shadow">
+                    <p>Current groups:</p>
+                    <br>
+                    <form method="POST" action="/group">
+                        <select name="select_group">
+                        {% for group in all_user_groups %}
+                        <option value="{{ group }}">{{ group }}</option>
+                        {% endfor %}
+                        </select>
+                        <button type="submit" class="btn bg-white text-dark btn-outline-dark btn-block">Go To Group</button>
+                    </form>
+                    <br>
+                    <p>Create a Group:</p>
+                    <form method="GET" action="/create_group">
+                        <button type="submit" class="btn bg-dark text-white btn-block">+</button>
+                        <hr/>
+                        <span class="text-muted">Click "+" to create a group! </span>
+                    </form>
+                </div>
+                <br>
+                <h5 id="brand">Tutorial</h5>
+                <iframe width="315" height="155" src="https://www.youtube.com/embed/703vN39BEM0" frameborder="0"
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <div class="col-5">
+                <h5 class="text-right" id="brand">{{ username }}</h5>
+                <div class="card card-body shadow">
+                    <div>
+                        <img src="{{ pic }}" width="300" height="400">
+                    </div>
+                <form method="POST" action="/add_profile_picture" enctype="multipart/form-data">
+                    <h6>Change Profile Picture</h6>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="image" id="image">
+                        <label class="custom-file-label" for="image">Select image...</label>
+                    </div>
+                        <button type="submit" class="btn bg-dark text-white btn-block">Add Image</button>
+                    </form>
+                <br>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+{% endblock %}

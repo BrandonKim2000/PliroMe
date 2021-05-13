@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    {% block head %}
+    {% endblock %}
+  </head>
+  <body> 
+    {% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand pt-2" href="#"><h3 id="brand">PliroMe</h3></a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active" id="username_profile">
+          <form method="GET" action="/profile">
+            <button type="submit" class="btn bg-dark text-white btn-block">
+              {% block navbar_user %}
+              {% endblock %}
+            </button>
+          </form>
+        </li>
+        <li class="nav-item active">
+            <form method="GET" action="/balance">
+                <button type="submit" class="btn bg-dark text-white btn-block">My Balance</button>
+            </form>
+        </li>
+        <li class="nav-item active">
+            <form method="GET" action="/settings">
+                <button type="submit" class="btn bg-dark text-white btn-block">Settings</button>
+            </form>
+        </li>
+        <li class="nav-item active">
+            <form method="GET" action="/logout">
+                <button type="submit" class="btn bg-dark text-white btn-block">Log Out</button>
+            </form>
+        </li>
+      </ul>
+    </nav>
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block footer %}
+    <footer id="sticky-footer" class="w-100 py-4 text-dark">
+      <div class="container text-center">
+          <small>&copy; PliroMe, 2021</small>
+      </div>
+    </footer>
+    {% endblock %}
+  </body>
+</html>
